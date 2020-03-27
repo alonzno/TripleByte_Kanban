@@ -13,7 +13,8 @@ const useStyles = makeStyles({
 		flexDirection: "row",
 		justifyContent: "space-evenly",
 		width: '100%',
-		marginTop: '20px',
+		//marginTop: '20px',
+
 		//height: '100vh',
 	},
 	title: {

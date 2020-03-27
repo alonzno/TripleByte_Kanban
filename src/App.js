@@ -11,10 +11,8 @@ function App() {
     let curr_todos = todos[cat];
 
     let new_obj = Object.assign({}, todos, {[cat]: [...curr_todos, text]});
-    //todos[cat] = [...curr_todos, text];
 
     setTodos(new_obj);
-    //setTodos(todos);
 
     console.log(todos);
   }

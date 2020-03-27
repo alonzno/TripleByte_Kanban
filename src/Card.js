@@ -10,10 +10,11 @@ import { GoChevronLeft, GoChevronRight} from 'react-icons/go';
 const useStyles = makeStyles({
 	root: {
 		marginBottom: "10px",
+		//width: "200px",
 	},
 	cc: {
 		display: "flex",
-
+		wordBreak: "break-all",
 		justifyContent: "space-between"
 	},
 	icon: {

@@ -11,7 +11,8 @@ import KanbanCard from './Card';
 const useStyles = makeStyles({
 	root: {
 		display: "flex",
-		flexGrow: '1',
+		//flexGrow: '1',
+		flex: "0 0 calc(calc(100vw - 125px) / 4)",
 		flexDirection: "column",
 		//justifyContent: 'space-around',
 		marginLeft: "25px",
