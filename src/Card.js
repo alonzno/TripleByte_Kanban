@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -7,45 +8,62 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { GoChevronLeft, GoChevronRight} from 'react-icons/go';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { moveTodo } from './Actions';
+
 const useStyles = makeStyles({
 	root: {
 		marginBottom: "10px",
-		//width: "200px",
-	},
-	cc: {
 		display: "flex",
-		wordBreak: "break-all",
-		justifyContent: "space-between"
+		wordBreak: "break-word",
+		justifyContent: "space-between",
+		padding: "10px",
 	},
-	icon: {
-		height: "100%",
+	iconLeft: {
+		//width: "50px",
+		//height: "100%",
+		margin: "0px 10px 0px 0px",
+		"&:hover": {
+			color: "#AAA",
+		}
+	},
+	iconRight: {
+		//height: "100%",
+		margin: "0px 0px 0px 10px",
+		"&:hover": {
+			color: "#AAA",
+		}
+	},
+	text: {
+		margin: "auto",
 	}
 });
 
 export default function KanbanCard(props) {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 
 	function moveRight() {
-		props.mt(props.cat, props.cat + 1, props.text);
+		dispatch(moveTodo(props.cat, props.cat + 1, props.id));
 	}	
 	function moveLeft() {
-		props.mt(props.cat, props.cat - 1, props.text);
+		dispatch(moveTodo(props.cat, props.cat - 1, props.id));
 	}
 
 	return (
-		<Card className={classes.root}square>
-			<CardContent className={classes.cc}>
+		<Paper className={classes.root} square>
 			{ props.cat !== 0 &&
-				<GoChevronLeft size={50} className={classes.icon} onClick={moveLeft} />	  
+				<GoChevronLeft className={classes.iconLeft} size={50} onClick={moveLeft} />	  
 			}
-				<Typography>
+
+				<Typography className={classes.text}>
 					{props.text}
 				</Typography>
+
 			{ props.cat !== 3 &&
-				<GoChevronRight size={50} onClick={moveRight} />
+				<GoChevronRight className={classes.iconRight} size={50} onClick={moveRight} />
 			  
 			}
-			</CardContent>
-		</Card>
+		</Paper>
 	);
 }

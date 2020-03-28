@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo } from './Actions';
+
 import KanbanCard from './Card';
 
 
@@ -25,22 +28,28 @@ const useStyles = makeStyles({
 export default function Category(props) {
 	const classes = useStyles();
 
+	const todos = useSelector(state => state.todos.present[props.cat]);
+	const dispatch = useDispatch();
+
+
 	function clickHandler() {
 		let text = prompt("What would you like to add?", "");
 		if (text !== "") {
-			props.cb(props.id, text);
+			//props.cb(props.id, text);
+			dispatch(addTodo(props.cat, text));
 		}
 	}
 
 	return (
 		<div className={classes.root} style={{marginRight: props.mr}}>
-			<Paper className={classes.titleBar} style={{background: props.color}} elevation={4} square>
+			<Paper className={classes.titleBar} style={{background: props.color}} elevation={2} square>
 				<Typography variant='h4'>
-					Hello Name!
+					{props.name}
 				</Typography>
 			</Paper>
-			{props.todos.map((value) => {
-				return <KanbanCard text={value} cat={props.id} mt={props.mt}/>
+
+			{todos.map((value, index) => {
+				return <KanbanCard key={index} id={index} text={value} cat={props.cat} />
 			})}
 
 			<Button variant="contained" onClick={clickHandler} >

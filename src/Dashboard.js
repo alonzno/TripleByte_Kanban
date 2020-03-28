@@ -27,10 +27,10 @@ export default function Dashboard(props) {
 
 	return (
 		<div className={classes.root}>
-			<Category color="#8E6E95" mr="0px" cb={props.cb} id={0} todos={props.todos[0]} mt={props.mt}/>
-			<Category color="#39A59C" mr="0px" cb={props.cb} id={1} todos={props.todos[1]} mt={props.mt}/>
-			<Category color="#344759" mr="0px" cb={props.cb} id={2} todos={props.todos[2]} mt={props.mt}/>
-			<Category color="#E8741E" mr="25px" cb={props.cb} id={3} todos={props.todos[3]} mt={props.mt}/>
+			<Category color="#8E6E95" name="Jeffrey" mr="0px" cat={0} />
+			<Category color="#39A59C" name="Lisa" mr="0px" cat={1} />
+			<Category color="#344759" name="Truman" mr="0px" cat={2} />
+			<Category color="#E8741E" name="Iris" mr="25px" cat={3} />
 		</div>
 	);
 }
